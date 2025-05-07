@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
+
+.team-selection-screen {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Exo 2', sans-serif;
+  color: white;
+}
+
+.team-selection-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.2),
+              0 0 80px rgba(50, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 1000px;
+  width: 90%;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selection-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.hockey-sticks.small {
+  position: relative;
+  height: 50px;
+  width: 140px;
+  margin: 0 auto 10px;
+}
+
+.selection-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  background: linear-gradient(to bottom, #ffffff 0%, #cccccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+}
+
+.selection-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #ff0000;
+  position: relative;
+}
+
+.selection-subtitle:after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 50%;
+  background: linear-gradient(90deg, transparent, #ff0000, transparent);
+  bottom: -8px;
+  left: 25%;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.team-card {
+  background: rgba(20, 0, 0, 0.4);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardIn 0.6s ease forwards;
+}
+
+@keyframes cardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+.team-card.selected {
+  background: rgba(50, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.logo-container {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo-wrapper {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s ease;
+}
+
+.logo-wrapper.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.team-logo {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.team-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.selected-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 0, 0, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+.confirm-button {
+  background: linear-gradient(to bottom, #ff0000 0%, #990000 100%);
+  color: white;
+  border: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 12px 50px;
+  border-radius: 50px;
+  margin: 20px 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4),
+              inset 0 0 10px rgba(255, 255, 255, 0.2);
+  letter-spacing: 2px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-button:hover:not(.disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6),
+              inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.confirm-button:active:not(.disabled) {
+  transform: scale(0.98);
+  background: linear-gradient(to bottom, #cc0000 0%, #660000 100%);
+}
+
+.confirm-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(to bottom, #aaaaaa 0%, #666666 100%);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%);
+  transition: left 0.5s;
+}
+
+.confirm-button:hover:not(.disabled) .button-shine {
+  left: 100%;
+}
+
+.team-info {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: rgba(50, 0, 0, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  font-size: 14px;
+}
+
+.team-info strong {
+  color: #ff6666;
+}
+
+.bg-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .teams-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .teams-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .selection-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-selection-content {
+    padding: 20px 15px;
+  }
+  
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .selection-title {
+    font-size: 2rem;
+  }
+  
+  .confirm-button {
+    padding: 10px 30px;
+    font-size: 1rem;
+  }
+}
